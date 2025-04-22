@@ -1,0 +1,21 @@
+services:
+  tomcat:
+    image: bitnami/tomcat:10.1.40
+    container_name: webapp-tomcat
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '8080:8080'
+
+
+  db:
+    image: postgres:15.2
+    container_name: webapp-postgres
+    restart: always
+    environment:
+      POSTGRES_DB: webapp
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
